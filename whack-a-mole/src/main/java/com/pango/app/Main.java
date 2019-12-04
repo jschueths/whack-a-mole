@@ -1,16 +1,12 @@
+package com.pango.app;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,7 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import java.util.ArrayList;
@@ -165,8 +160,8 @@ public class Main extends Application {
             listOfbutts.get(i).setMinSize(60, 60);
         }
 
-        Image mole = new Image(getClass().getResourceAsStream("mole.png"));
-        Image hitMole = new Image(getClass().getResourceAsStream("hitMole.png"));
+        Image mole = new Image(getClass().getResourceAsStream("images/mole.png"));
+        Image hitMole = new Image(getClass().getResourceAsStream("images/hitMole.png"));
 
         for (int i = 0; i < 10;) {
             for (int j = 0; j < 10; j++){
@@ -178,7 +173,7 @@ public class Main extends Application {
             }
         }
 
-        //final int[] moleSpot = {rand.nextInt(100)};
+        final int[] moleSpot = {rand.nextInt(100)};
         listOfbutts.get(moleSpot[0]).setVisible(true);
         listOfbutts.get(moleSpot[0]).setGraphic(new ImageView(mole));
 
