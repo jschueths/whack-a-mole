@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -81,7 +82,6 @@ public class Main extends Application {
     private HSPane m_HSPane;
 
     @Override // Override the start method in the Application class
-
     public void start(Stage stage) {
         stage.setMinHeight(820);
         stage.setMinWidth(680);
@@ -89,7 +89,7 @@ public class Main extends Application {
         stage.setMaxWidth(680);
 
         BorderPane border = new BorderPane();
-        //HSPane HSPane = new HSPane();
+//        HSPane HSPane = new HSPane();
 
         border.setTop(addTopPane());
         border.setCenter(addGridPane());
@@ -98,7 +98,12 @@ public class Main extends Application {
 
         //Creating a scene object
         Scene scene = new Scene(border);
-        scene.getStylesheets().add("./styles.css");
+        Label label = new Label("foo");
+//        scene = new Scene(new StackPane(label), 640, 480);
+        stage.setScene(scene);
+        String stylesheet = getClass().getResource("/css/styles.css").toExternalForm();
+        System.out.println(stylesheet);
+        scene.getStylesheets().add(stylesheet);
 
         //Setting title to the Stage
         stage.setTitle("Whack-o-Mole");
@@ -112,7 +117,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        Application.launch(args);
+        launch(args);
     }
 
     private BorderPane addTopPane(){
@@ -160,8 +165,8 @@ public class Main extends Application {
             listOfbutts.get(i).setMinSize(60, 60);
         }
 
-        Image mole = new Image(getClass().getResourceAsStream("images/mole.png"));
-        Image hitMole = new Image(getClass().getResourceAsStream("images/hitMole.png"));
+        Image mole = new Image(getClass().getResourceAsStream("/images/mole.png"));
+        Image hitMole = new Image(getClass().getResourceAsStream("/images/hitMole.png"));
 
         for (int i = 0; i < 10;) {
             for (int j = 0; j < 10; j++){
@@ -215,7 +220,8 @@ public class Main extends Application {
             for (int i = 0; i < 100; i++) {
                 listOfbutts.get(i).setVisible(false);
             }
-            //moleSpot[0] = rand.nextInt(100);  this works but new random mole isnt clickable, i think may also be the reason the timetable moles arent clickable
+            //moleSpot[0] = rand.nextInt(100);  this works but new random mole isnt clickable,
+            // i think may also be the reason the timetable moles arent clickable
             listOfbutts.get(moleSpot[0]).setVisible(true); // sets first mole
             listOfbutts.get(moleSpot[0]).setGraphic(new ImageView(mole)); //shows first clickable mole
             score = 0; // resets score
